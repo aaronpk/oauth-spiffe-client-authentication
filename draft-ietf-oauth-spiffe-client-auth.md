@@ -52,6 +52,9 @@ author:
  -  fullname: Scott Rose
     organization: NIST
     email: scott.rose@nist.gov
+ -  fullname: Stian Thorgersen
+    organization: IBM
+    email: sthorger@ibm.com
 
 normative:
   RFC6749:

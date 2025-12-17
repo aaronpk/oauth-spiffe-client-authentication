@@ -44,11 +44,11 @@ venue:
 
 author:
  -  fullname: Arndt Schwenkschuster
-    organization: SPIRL
+    organization: Defakto Security
     email: arndts.ietf@gmail.com
  -  fullname: Pieter Kasselmann
-    organization: SPIRL
-    email: pieter@spirl.com
+    organization: Defakto Security
+    email: pieter@defakto.security
  -  fullname: Scott Rose
     organization: NIST
     email: scott.rose@nist.gov

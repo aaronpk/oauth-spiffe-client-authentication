@@ -200,7 +200,7 @@ client-assertion-type%3Ajwt-spiffe&
 client_assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6IjR2QzhhZ3ljSHU2cm5rRUVKWUFINlZ1Q2U0Sm9Ta1BWIiwidHlwIjoiSldUIn0.eyJhdWQiOlsiaHR0cHM6Ly9hcy5leGFtcGxlLmNvbS90b2tlbiJdLCJleHAiOjE3NDcxMjQ1NDMsImlhdCI6MTc0NzEyNDI0Mywic3ViIjoic3BpZmZlOi8vZXhhbXBsZS5vcmcvY2xpZW50LzEyMzQifQ.Xlv5lW4cbxDsQk4l0paewG4nXOR7MxF_FMn_c27DX45Bxr2HUZf9a6Untfq5S47xpwbw495HBL6_1Lc6TMJxmw
 ~~~
 
-For clarify, the SPIFFE-JWT header and body decoded:
+For clarity, the SPIFFE-JWT header and body decoded:
 
 ~~~
 {

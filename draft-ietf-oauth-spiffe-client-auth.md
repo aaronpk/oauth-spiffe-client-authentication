@@ -186,7 +186,7 @@ For clarify, the SPIFFE-JWT header and body decoded:
 
 ### JWT-SVID example with Client ID Metadata Document
 
-The following examples illustrates a `client_credentials` request to the token endpoint of an OAuth 2.0 authorization server leveraging a SPIFFE JWT-SVID to authenticate the client.
+The following example illustrates a `client_credentials` request to the token endpoint of an OAuth 2.0 authorization server leveraging a SPIFFE JWT-SVID to authenticate the client.
 
 ~~~
 POST /token HTTP/1.1

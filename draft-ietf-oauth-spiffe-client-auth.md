@@ -162,7 +162,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&
 code=n0esc3NRze7LTCu7iYzS6a5acc3f0ogp4&
 client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3A
-client-assertion-type%3Ajwt-spiffe&
+client-assertion-type=jwt-spiffe&
 client_assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6IjR2QzhhZ3ljSHU2cm5rRUVKWUFINlZ1Q2U0Sm9Ta1BWIiwidHlwIjoiSldUIn0.eyJhdWQiOlsiaHR0cHM6Ly9hcy5leGFtcGxlLmNvbS8iXSwiZXhwIjoxNzQ3MTI0NTQzLCJpYXQiOjE3NDcxMjQyNDMsInN1YiI6InNwaWZmZTovL2V4YW1wbGUub3JnL215LW9hdXRoLWNsaWVudCJ9.Xlv5lW4cbxDsQk4l0paewG4nXOR7MxF_FMn_c27DX45Bxr2HUZf9a6Untfq5S47xpwbw495HBL6_1Lc6TMJxmw
 ~~~
 
@@ -196,7 +196,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&
 client_id=https%3A%2F%2Fexample.org%2Fclient%2Fmetadata.json&
 client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3A
-client-assertion-type%3Ajwt-spiffe&
+client-assertion-type=jwt-spiffe&
 client_assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6IjR2QzhhZ3ljSHU2cm5rRUVKWUFINlZ1Q2U0Sm9Ta1BWIiwidHlwIjoiSldUIn0.eyJhdWQiOlsiaHR0cHM6Ly9hcy5leGFtcGxlLmNvbS8iXSwiZXhwIjoxNzQ3MTI0NTQzLCJpYXQiOjE3NDcxMjQyNDMsInN1YiI6InNwaWZmZTovL2V4YW1wbGUub3JnL2NsaWVudC8xMjM0In0.Xlv5lW4cbxDsQk4l0paewG4nXOR7MxF_FMn_c27DX45Bxr2HUZf9a6Untfq5S47xpwbw495HBL6_1Lc6TMJxmw
 ~~~
 
@@ -224,8 +224,8 @@ The `client_id` points to a Client ID Metadata Document ({{I-D.ietf-oauth-client
 {
     "client_id": "https://example.org/client/metadata.json",
     "client_name": "Example Client",
-    "jwks_uri": "https://example.org/client/keys.json",
-    "spiffe_id": "spiffe://example.org/client/*"
+    "spiffe_id": "spiffe://example.org/client/*",
+    "spiffe_bundle_endpoint": "https://example.org/client/bundle.json"
 }
 ~~~
 

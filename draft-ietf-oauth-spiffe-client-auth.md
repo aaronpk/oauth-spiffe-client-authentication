@@ -148,7 +148,7 @@ To validate JWT-SVID client authentication requests the authorization server MUS
 2. Verify that the JWT has not expired (check the `exp` claim).
 3. Verify that the `aud` claim contains only the issuer identifier of the authorization server as its sole value. See {{!I-D.draft-ietf-oauth-rfc7523bis}} for details.
 4. Verify the JWT signature using the signing keys of the trust domains according to {{spiffe-bundle-validation}}.
-5. Verify that the SPIFFE ID in the `sub` claim matches or is associated with a recognized client identifier. If the client authentication is presented with a `client_id` that is a URL described in {{I-D.ietf-oauth-client-id-metadata-document}}, verify that the SPIFFE ID in the `sub` claim matches the `spiffe_id` value in the Client ID Metadata Document (see {{client-registration-metadata}}). If the `spiffe_id` value uses a wildcard, it MUST end with the two-character sequence "`/*`". In this case, the authorization server MUST perform a path-segment prefix match: the `sub` claim value MUST begin with the `spiffe_id` value excluding the trailing "`*`" (i.e., up to and including the final "`/`"), and this prefix MUST correspond to complete path segment(s) of the SPIFFE ID (for example, `spiffe://example.org/client/*` matches `spiffe://example.org/client/123` but does not match `spiffe://example.org/client123`). Otherwise, the `sub` claim MUST be an exact match of the `spiffe_id` value.
+5. Verify that the SPIFFE ID in the `sub` claim matches or is associated with a recognized client identifier. If the client authentication is presented with a `client_id` that is a URL described in {{I-D.ietf-oauth-client-id-metadata-document}}, verify that the SPIFFE ID in the `sub` claim matches the `spiffe_id` value in the Client ID Metadata Document as described in {{client-registration-metadata}}.
 
 ### JWT-SVID example
 
@@ -317,10 +317,12 @@ Similar to the trust establishment, corresponding OAuth clients need to be estab
 This specification defines the following client metadata parameters for use in Client ID Metadata Documents {{I-D.ietf-oauth-client-id-metadata-document}}:
 
 spiffe_id
-: REQUIRED. The SPIFFE ID of the client, e.g. `spiffe://example.org/my-oauth-client`. The value MAY include a trailing `*` character (e.g. `spiffe://example.org/workloads/*`) indicating that a prefix match against the SPIFFE ID in the `sub` claim of the JWT-SVID is acceptable rather than requiring an exact match.
+: REQUIRED. The SPIFFE ID of the client, e.g. `spiffe://example.org/my-oauth-client`. The value MAY include a trailing `/*` character sequence (e.g. `spiffe://example.org/workloads/*`) indicating that a prefix match against the SPIFFE ID in the `sub` claim of the JWT-SVID is acceptable rather than requiring an exact match.
 
 spiffe_bundle_endpoint
 : OPTIONAL. The URL of the SPIFFE Bundle Endpoint for the client's trust domain, which the authorization server can use to retrieve the signing keys for validating the client's SVIDs. If not provided, the authorization server MUST have an alternative means of obtaining the signing keys for the client's trust domain, such as by using the keys provided in the `jwks` or `jwks_uri` in the Client ID Metadata Document.
+
+If the `spiffe_id` value uses a wildcard, it MUST end with the two-character sequence "`/*`". In this case, the authorization server MUST perform a path-segment prefix match: the `sub` claim value MUST begin with the `spiffe_id` value excluding the trailing "`*`" (i.e., up to and including the final "`/`"), and this prefix MUST correspond to complete path segment(s) of the SPIFFE ID (for example, `spiffe://example.org/client/*` matches `spiffe://example.org/client/123` but does not match `spiffe://example.org/client123`). Otherwise, the `sub` claim MUST be an exact match of the `spiffe_id` value.
 
 # SPIFFE Key Distribution and Validation {#spiffe-bundle-validation}
 

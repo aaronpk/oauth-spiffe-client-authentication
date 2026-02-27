@@ -320,7 +320,7 @@ spiffe_id
 : REQUIRED. The SPIFFE ID of the client, e.g. `spiffe://example.org/my-oauth-client`. The value MAY include a trailing `/*` character sequence (e.g. `spiffe://example.org/workloads/*`) indicating that a prefix match against the SPIFFE ID in the `sub` claim of the JWT-SVID is acceptable rather than requiring an exact match.
 
 spiffe_bundle_endpoint
-: OPTIONAL. The URL of the SPIFFE Bundle Endpoint for the client's trust domain, which the authorization server can use to retrieve the signing keys for validating the client's SVIDs. If not provided, the authorization server MUST have an alternative means of obtaining the signing keys for the client's trust domain, such as by using the keys provided in the `jwks` or `jwks_uri` in the Client ID Metadata Document.
+: OPTIONAL. The URL of the SPIFFE Bundle Endpoint for the client's trust domain, which the authorization server can use to retrieve the signing keys for validating the client's SVIDs. If not provided, the authorization server MUST obtain the signing keys for the client's trust domain through some other established mechanism, such as a pre-configured SPIFFE bundle.
 
 If the `spiffe_id` value uses a wildcard, it MUST end with the two-character sequence "`/*`". In this case, the authorization server MUST perform a path-segment prefix match: the `sub` claim value MUST begin with the `spiffe_id` value excluding the trailing "`*`" (i.e., up to and including the final "`/`"), and this prefix MUST correspond to complete path segment(s) of the SPIFFE ID (for example, `spiffe://example.org/client/*` matches `spiffe://example.org/client/123` but does not match `spiffe://example.org/client123`). Otherwise, the `sub` claim MUST be an exact match of the `spiffe_id` value.
 
